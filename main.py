@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 import google.generativeai as genai
+import os
 
 app = FastAPI(
     title="GitHub-Themed Gemini Chatbot",
@@ -19,8 +20,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Hardcoded Gemini API Key
-GEMINI_API_KEY = "AIzaSyCic6lPBdCZwwu0XW0PhLCE3CUUONdbec4"
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-pro')
 
