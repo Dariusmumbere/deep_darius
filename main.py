@@ -20,7 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel('gemini-pro')
 
 class ChatMessage(BaseModel):
