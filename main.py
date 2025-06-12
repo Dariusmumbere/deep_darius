@@ -36,8 +36,8 @@ if not GEMINI_API_KEY:
 
 try:
     genai.configure(api_key=GEMINI_API_KEY)
-    # Test the connection
-    test_model = genai.GenerativeModel('gemini-pro')
+    # Test the connection with the correct model name
+    test_model = genai.GenerativeModel('gemini-1.0-pro')  # Updated model name
     test_response = test_model.generate_content("Test connection")
     logger.info("Successfully connected to Gemini API")
 except Exception as e:
@@ -84,7 +84,7 @@ async def chat_with_gemini(request: ChatRequest):
         
         # Generate response
         try:
-            model = genai.GenerativeModel('gemini-pro')
+            model = genai.GenerativeModel('gemini-1.0-pro')  # Updated model name
             response = model.generate_content(conversation)
             
             if not response or not hasattr(response, 'text'):
